@@ -1,7 +1,27 @@
-﻿@page "/contact"
+﻿@page "/contact/"
+@page "/contact/{id:int}"
+@page "/contact/{id:int}/{name}"
 
-<h3>Contact</h3>
+@if (Id != null)
+{
+    if (Name != null)
+    {
+        <h3>Contact ID = @Id and Name = @Name</h3>
+    }
+    else
+    {
+        <h3>Contact ID = @Id</h3>
+    }
+}
+else
+{
+    <h3>Contact Guest</h3>
+}
 
 @code {
+    [Parameter]
+    public int? Id { get; set; }
 
+    [Parameter]
+    public string? Name { get; set; }
 }
